@@ -1,0 +1,194 @@
+        SYSTEMS
+Paynet
+Interswitch
+Paynetslan
+Interswitchgroup
+Prime
+Online
+Fraudguard
+Ist
+Intsqlsrv
+Intsqlsrv1
+Officedb
+Realtimedb
+Cencon
+Entsqlsrv
+Router
+Firewall
+Access_control
+Pastel
+Terminal_server
+Intranet
+Tranwall_tc
+
+CREATE TABLE `systems` (
+ `sid` int(20) NOT NULL AUTO_INCREMENT,
+ `entity` varchar(30) DEFAULT NULL,
+ PRIMARY KEY (`sid`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1
+
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Paynet','paynet','[Paynet]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Interswitch','interswitch','[Interswitch]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Paynetslan','paynetslan','[Paynetslan]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Interswitchgroup','interswitchgroup','[Interswitchgroup]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Prime','prime','[Prime]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Online','online','[Online]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Fraudguard','fraudguard','[Fraudguard]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Ist','ist','[IST]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Intsqlsrv','intsqlsrv','[Intsqlsrv]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Intsqlsrv1','intsqlsrv1','[Intsqlsrv1]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Officedb','officedb','[Office-DB]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Realtimedb','realtimedb','[Realtime-DB]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Cencon','cencon','[Cencon]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Entsqlsrv','entsqlsrv','[Entsqlsrv]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Router','partnerrouter','[Partner router]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Firewall','internetrouter','[Internet router]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Access_control','meraki','[Meraki]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Pastel','juniper','[Juniper]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Terminal_server','pastel','[Pastel]');
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Intranet','terminal_server','[Terminal Server]')
+INSERT INTO `systems`(`entity`, `name`, `value`) VALUES ('Tranwall_tc','tranwall_tc','[Tranwall TC]');
+
+
+INSERT INTO `systems` (`entity`, `name`, `value`) VALUES
+('Paynet', 'paynet', '[Paynet]'),
+('Interswitch', 'interswitch', '[Interswitch]'),
+('Paynetslan', 'paynetslan', '[Paynetslan]'),
+('Interswitchgroup', 'interswitchgroup', '[Interswitchgroup]'),
+('Prime', 'prime', '[Prime]'),
+('Online', 'online', '[Online]'),
+('Fraudguard', 'fraudguard', '[Fraudguard]'),
+('Ist', 'ist', '[IST]'),
+('Intsqlsrv', 'intsqlsrv', '[Intsqlsrv]'),
+('Intsqlsrv1', 'intsqlsrv1', '[Intsqlsrv1]'),
+('Officedb', 'officedb', '[Office-DB]'),
+('Realtimedb', 'realtimedb', '[Realtime-DB]'),
+('Cencon', 'cencon', '[Cencon]'),
+('Entsqlsrv', 'entsqlsrv', '[Entsqlsrv]'),
+('Partner Router', 'partnerrouter', '[Partner router]'),
+('Internet Router', 'internetrouter', '[Internet router]'),
+('Meraki', 'meraki', '[Meraki]'),
+('Juniper', 'juniper', '[Juniper]'),
+('Pastel', 'pastel', '[Pastel]'),
+('Terminal Server', 'terminal_server', '[Terminal Server]'),
+('Tranwall TC', 'tranwall_tc', '[Tranwall TC]');
+
+
+
+        DEPARTMENTS
+Administration and Suppport
+Core Systems and Switching
+Development
+Infrastructure
+QA and Security
+
+CREATE TABLE `department` (
+ `did` int(10) NOT NULL AUTO_INCREMENT,
+ `entity` varchar(50) DEFAULT NULL,
+ PRIMARY KEY (`did`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1
+
+
+INSERT INTO `department`(`entity`) VALUES ('Administration and Suppport');
+INSERT INTO `department`(`entity`) VALUES ('Core Systems and Switching');
+INSERT INTO `department`(`entity`) VALUES ('Development');
+INSERT INTO `department`(`entity`) VALUES ('Infrastructure');
+INSERT INTO `department`(`entity`) VALUES ('QA and Security');
+
+
+        PERMISSIONS
+Admin
+Users
+Support
+Limited
+
+CREATE TABLE `permissions` (
+ `pid` int(10) NOT NULL AUTO_INCREMENT,
+ `permissions` varchar(50) NOT NULL,
+ PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+INSERT INTO `permissions`(`permissions`) VALUES ('Admin');
+INSERT INTO `permissions`(`permissions`) VALUES ('Users');
+INSERT INTO `permissions`(`permissions`) VALUES ('Support');
+INSERT INTO `permissions`(`permissions`) VALUES ('Limited');
+
+
+                NETWORK
+CREATE TABLE `network` (
+ `id` int(100) NOT NULL AUTO_INCREMENT,
+ `user` varchar(20) DEFAULT NULL,
+ `reqtype` varchar(20) DEFAULT NULL,
+ `names` varchar(255) DEFAULT NULL,
+ `emails` varchar(255) DEFAULT NULL,
+ `phone_number` varchar(15) DEFAULT NULL,
+ `job_title` varchar(50) DEFAULT NULL,
+ `department` varchar(50) DEFAULT NULL,
+ `current_user_id` varchar(50) DEFAULT NULL,
+ `work_location` varchar(50) DEFAULT NULL,
+ `request_date` datetime DEFAULT NULL,
+ `employee_no` varchar(50) DEFAULT NULL,
+ `paynet` varchar(50) DEFAULT NULL,
+ `paynetslan` varchar(50) DEFAULT NULL,
+ `interswitch` varchar(50) DEFAULT NULL,
+ `interswitchgroup` varchar(50) DEFAULT NULL,
+ `prime` varchar(50) DEFAULT NULL,
+ `online` varchar(50) DEFAULT NULL,
+ `fraudguard` varchar(50) DEFAULT NULL,
+ `ist` varchar(50) DEFAULT NULL,
+ `intsqlsrv` varchar(50) DEFAULT NULL,
+ `intsqlsrv1` varchar(50) DEFAULT NULL,
+ `officedb` varchar(50) DEFAULT NULL,
+ `realimedb` varchar(50) DEFAULT NULL,
+ `cencon` varchar(50) DEFAULT NULL,
+ `extsqlsrv` varchar(50) DEFAULT NULL,
+ `router` varchar(50) DEFAULT NULL,
+ `network_switch` varchar(50) DEFAULT NULL,
+ `firewall` varchar(50) DEFAULT NULL,
+ `access_control` varchar(50) DEFAULT NULL,
+ `pastel` varchar(50) DEFAULT NULL,
+ `terminal_server` varchar(50) DEFAULT NULL,
+ `intranet` varchar(50) DEFAULT NULL,
+ `tranwall_tc` varchar(50) DEFAULT NULL,
+ `purpose` text,
+ `authorizers` text,
+ `auth1` varchar(10) DEFAULT NULL,
+ `auth2` varchar(10) DEFAULT NULL,
+ `auth3` varchar(10) DEFAULT NULL,
+ `auth4` varchar(10) DEFAULT NULL,
+ `a1` varchar(3) DEFAULT NULL,
+ `a2` varchar(3) DEFAULT NULL,
+ `a3` varchar(3) DEFAULT NULL,
+ `a4` varchar(3) DEFAULT NULL,
+ `last_authdate` datetime DEFAULT NULL,
+ `access_granted` varchar(10) DEFAULT NULL,
+ `paynetDATE` datetime DEFAULT NULL,
+ `interswitchDATE` datetime DEFAULT NULL,
+ `paynetslanDATE` datetime DEFAULT NULL,
+ `interswitchgroupDATE` datetime DEFAULT NULL,
+ `primeDATE` datetime DEFAULT NULL,
+ `onlineDATE` datetime DEFAULT NULL,
+ `fraudguardDATE` datetime DEFAULT NULL,
+ `istDATE` datetime DEFAULT NULL,
+ `intsqlsrvDATE` datetime DEFAULT NULL,
+ `intsqlsrv1DATE` datetime DEFAULT NULL,
+ `officedbDATE` datetime DEFAULT NULL,
+ `realtimedbDATE` datetime DEFAULT NULL,
+ `cenconDATE` datetime DEFAULT NULL,
+ `entsqlsrvDATE` datetime DEFAULT NULL,
+ `routerDATE` datetime DEFAULT NULL,
+ `firewallDATE` datetime DEFAULT NULL,
+ `access_controlDATE` datetime DEFAULT NULL,
+ `pastelDATE` datetime DEFAULT NULL,
+ `terminal_serverDATE` datetime DEFAULT NULL,
+ `intranetDATE` datetime DEFAULT NULL,
+ `tranwall_tcDATE` datetime DEFAULT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1
+
+
+SELECT DISTINCT network.names nnames, network.department ndepartment, reqtype, network.paynet npaynet FROM network, users WHERE users.paynet = network.paynet or users.prime = network.prime GROUP BY network.id ORDER BY network.id DESC;
+
+$names = $_POST['name'];
+$splitname = explode(" ",$_POST['name']);
