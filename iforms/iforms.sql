@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 30, 2017 at 04:53 AM
+-- Generation Time: Jun 01, 2017 at 01:13 PM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.18-0ubuntu0.16.04.1
 
@@ -74,9 +74,7 @@ INSERT INTO `designation` (`deid`, `entity`) VALUES
 (2, 'Head Financial Technology and Innovation'),
 (3, 'Head Operations'),
 (4, 'Head Product & Service Delivery'),
-(5, 'Head Technology'),
-(6, 'Human Resource'),
-(7, 'Risk & Legal');
+(5, 'Head Technology');
 
 -- --------------------------------------------------------
 
@@ -169,7 +167,9 @@ CREATE TABLE `network` (
 --
 
 INSERT INTO `network` (`id`, `reqtype`, `names`, `emails`, `phone_number`, `designation`, `department`, `user_id`, `work_location`, `request_date`, `employee_no`, `paynet`, `paynetslan`, `interswitch`, `interswitchgroup`, `prime`, `online`, `fraudguard`, `ist`, `intsqlsrv`, `intsqlsrv1`, `officedb`, `realtimedb`, `cencon`, `entsqlsrv`, `partner_router`, `internet_router`, `meraki_fw`, `juniper_fw`, `office_access`, `cde_access`, `pastel`, `terminal_server`, `intranet`, `tranwall_tc`, `purpose`, `authorizers`, `auth1name`, `auth2name`, `auth3name`, `auth4name`, `authlevel`, `authlm`, `auth1`, `auth2`, `auth3`, `auth4`, `a0`, `a1`, `a2`, `a3`, `a4`, `decline_reason`, `last_authdate`, `access_granted`, `implement_date`, `paynetDATE`, `interswitchDATE`, `paynetslanDATE`, `interswitchgroupDATE`, `primeDATE`, `onlineDATE`, `fraudguardDATE`, `istDATE`, `intsqlsrvDATE`, `intsqlsrv1DATE`, `officedbDATE`, `realtimedbDATE`, `cenconDATE`, `entsqlsrvDATE`, `routerDATE`, `firewallDATE`, `access_controlDATE`, `pastelDATE`, `terminal_serverDATE`, `intranetDATE`, `tranwall_tcDATE`) VALUES
-(1, 'New User', 'Vincent Omondi', 'vincent.omondi@interswitchgroup.com', '254710145559', 'Switch Technician', 'Core Systems and Switching', 'omondiv', '', '2017-05-26 17:20:55', '', '', '', '', '', '', '', '', '', '', 'User', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Cardwatch and Cardview support.', 'Paul Mathenge Maina, Linda Warui, Joseph Nguu, Maseline Keya, Linda Warui', NULL, NULL, NULL, NULL, '5', 'PMM', 'LW', 'JN', 'MK', 'LW', 'yes', 'yes', 'yes', 'yes', 'yes', NULL, '2017-05-26 17:49:17', NULL, '2017-05-28 23:47:10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'New User', 'Vincent Omondi', 'vincent.omondi@interswitchgroup.com', '254710145559', 'Switch Technician', 'Core Systems and Switching', 'omondiv', '', '2017-05-26 17:20:55', '', '', '', '', '', '', '', '', '', '', 'User', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Cardwatch and Cardview support.', 'Paul Mathenge Maina, Linda Warui, Joseph Nguu, Maseline Keya, Linda Warui', NULL, NULL, NULL, NULL, '5', 'PMM', 'LW', 'JN', 'MK', 'LW', 'yes', 'yes', 'yes', 'yes', 'yes', NULL, '2017-05-26 17:49:17', NULL, '2017-05-28 23:47:10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'New User', 'Vincent Omondi', 'vincent.omondi@interswitchgroup.com', '254710145559', 'Technician', 'Core Systems & Switching', 'omondiv', '', '2017-05-28 00:23:36', '', '', '', 'Admin', '', '', '', '', '', '', '', '', '', '', '', '', '', 'User', '', '', '', '', '', '', '', 'adasdfa', 'Vincent Omondi, Vincent Omondi, Vincent Omondi, Vincent Omondi, Vincent Omondi', NULL, NULL, NULL, NULL, '5', 'omondiv', 'omondiv', 'omondiv', 'omondiv', 'omondiv', 'yes', 'yes', 'yes', 'yes', 'yes', NULL, '2017-05-29 00:13:32', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Temporary Access', 'Vincent Omondi', 'vincent.omondi@interswitchgroup.com', '254710145559', 'Technician', 'Core Systems & Switching', 'omondiv', '', '2017-05-28 23:20:00', '', '', '', 'Admin', '', '', 'User', '', '', '', 'Admin', '', '', '', 'User', '', '', '', '', 'User', 'User', '', '', '', 'Limited', 'testing', 'Vincent Omondi, Vincent Omondi, Vincent Omondi, Vincent Omondi, Vincent Omondi', NULL, NULL, NULL, NULL, '4', 'omondiv', 'omondiv', 'omondiv', 'omondiv', 'omondiv', 'yes', 'yes', 'yes', 'yes', 'no', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -406,7 +406,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `names`, `initials`, `email`, `phone`, `userid`, `department`, `designation`, `password`, `salt`, `authorizer`, `implementer`, `line_manager`) VALUES
-(1, 'Vincent Omondi', 'VO', 'vincent.omondi@interswitchgroup.com', '254710145559', 'omondiv', 'Core Systems & Switching', 'Technician', '5dd7fcf7da636652e3f036af3ce26a8d8ceff4f6d5ba73da8ffd3eb6b79a03324866ce811fa8fc251fd50211a7a509a03533c01512a1ca858aedc7a8a5b0271e', 'dag&cM#VRz&oZqaRYP1kwtWks1F3U#UHC#8HgzN8H%0*VXzkiNvGRibq#UdK1EAx', 'yes', 'yes', 'yes');
+(40, 'Vincent Omondi', 'VO', 'vincent.omondi@interswitchgroup.com', '254710145559', 'omondiv', 'Core Systems & Switching', 'Technician', '5dd7fcf7da636652e3f036af3ce26a8d8ceff4f6d5ba73da8ffd3eb6b79a03324866ce811fa8fc251fd50211a7a509a03533c01512a1ca858aedc7a8a5b0271e', 'dag&cM#VRz&oZqaRYP1kwtWks1F3U#UHC#8HgzN8H%0*VXzkiNvGRibq#UdK1EAx', 'yes', 'yes', 'yes');
 
 --
 -- Indexes for dumped tables
@@ -462,37 +462,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `did` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `did` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `designation`
 --
 ALTER TABLE `designation`
-  MODIFY `deid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `deid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `network`
 --
 ALTER TABLE `network`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `stid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `stid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 --
 -- AUTO_INCREMENT for table `systems`
 --
 ALTER TABLE `systems`
-  MODIFY `sid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `sid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
