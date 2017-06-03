@@ -13,7 +13,8 @@ include_once ('php/headerLS.php');
                         <label style="color:#ffffff;" >Userid</label>
                         <input style="margin: 0px;"  name="username" type="text" size="30" required/><br/>
                         <label style="color:#ffffff;" >Password</label>
-                        <input style="margin: 0px;" name="password" type="password" size="30" required/><br/>
+                        <input style="margin: 0px;" name="password" type="password" size="30" required/>
+                         <span class="error" id="password1Error"></span><br/>
                         <div style="padding:0px">
                             <button class="tiny round" type="submit" name="login">Login</button>
                         </div>
@@ -301,7 +302,7 @@ if (isset($_POST['login'])) {
         $_SESSION['sess_implementer'] = $sess_implementer;
         echo '<script>window.location.href = "forms.php";</script>';
     } else {
-        echo "<script>alert('Email or password is not correct, try again!')</script>";
+        echo "<script>document.getElementById('password1Error').innerHTML = 'Invalid Userid or Password!';</script>";
     }
 
     mysqli_close($conn); //Close the connection to the DB

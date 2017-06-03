@@ -9,7 +9,6 @@ include_once ('php/header.php');
     <form name="form" class="form" action="preview.php" method="POST">
         
         <div class="row">
-            <!--h3 style="color:#fff;font-size: 1rem;"><b>SECTION A - STAFF REQUIRING ACCESS</b></h3-->
             <div class="columns" style="background-color: white;">
               
             <div style="padding: 10px;">
@@ -32,22 +31,21 @@ include_once ('php/header.php');
             <tbody>
                 <th style="background-color:#00425f;color: #fff;"> DOMAINS</th>
                 <tr>
-                    <td><label><b><u>PAYNET</u></b></label></br>
-                    <input style="width: auto;" type="radio" name="paynet" value="Admin" >admin</br>
-                    <input style="width: auto;" type="radio" name="paynet" value="User" >user</br>
-                    </td>
-                    <td><label><b><u>INTERSWITCH</u></b></label></br>
-                    <input style="width: auto;" type="radio" name="interswitch" value="Admin">admin</br>
-                    <input style="width: auto;" type="radio" name="interswitch" value="User">user</br>
-                    </td>
-                    <td><label><b><u>PAYNETSLAN</u></b></label></br>
-                    <input style="width: auto;" type="radio" name="paynetslan" value="Admin">admin</br>
-                    <input style="width: auto;" type="radio" name="paynetslan" value="User">user</br>
-                    </td>
-                    <td><label><b><u>INTERSWITCHGROUP</u></b></label></br>
-                    <input style="width: auto;" type="radio" name="interswitchgroup" value="Admin">admin</br>
-                    <input style="width: auto;" type="radio" name="interswitchgroup" value="User">user</br>
-                    </td>
+                     
+<?php
+    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'DOMAINS' LIMIT 4");
+    //$values = mysqli_fetch_assoc($systemsql);
+
+    foreach ($systemsql as $row) {
+        $id = $row['id'];
+    ?>
+    <td><label><b><u><?php echo $row['entity']?></u></b></label></br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="Admin" >admin</br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="User" >user</br>
+    </td>
+    <?php 
+    }
+?>
                 </tr>
             
             
@@ -59,53 +57,60 @@ include_once ('php/header.php');
                         <td style="background-color:#00425f;color: #ee3132;"><strong><u>ORACLE</u></strong></td>
                     </tr>
                     <tr>
-                        <td><label><b><u>PRIME</u></b></label></br>
-                            <input style="width: auto;" type="radio" name="prime" value="Admin" >admin</br>
-                            <input style="width: auto;" type="radio" name="prime" value="User" >user</br>
-                        </td>
-                        <td><label><b><u>ONLINE</u></b></label></br>
-                            <input style="width: auto;" type="radio" name="online" value="Admin">admin</br>
-                            <input style="width: auto;" type="radio" name="online" value="User">user</br>
-                        </td>
-                        <td><label><b><u>FRAUDGUARD</u></b></label></br>
-                            <input style="width: auto;" type="radio" name="fraudguard" value="Admin">admin</br>
-                            <input style="width: auto;" type="radio" name="fraudguard" value="User">user</br>
-                        </td>
-                        <td><label><b><u>IST</u></b></label></br>
-                            <input style="width: auto;" type="radio" name="ist" value="Admin">admin</br>
-                            <input style="width: auto;" type="radio" name="ist" value="User">user</br>
-                        </td>
+                     
+<?php
+    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'ORACLE DATABASES' LIMIT 4");
+    //$values = mysqli_fetch_assoc($systemsql);
+
+    foreach ($systemsql as $row) {
+        $id = $row['id'];
+    ?>
+    <td><label><b><u><?php echo $row['entity']?></u></b></label></br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="Admin" >admin</br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="User" >user</br>
+    </td>
+    <?php 
+    }
+?>
                     </tr>
                     <tr>
                         <td style="background-color:#00425f;color: #ee3132;"><strong><u>SQL</u></strong></td>
                     </tr>
                     <tr>
-                        <td><label><b><u>INTSQLSRV</u></b></label></br>
-                            <input style="width: auto;" type="radio" name="intsqlsrv" value="Admin" >admin</br>
-                            <input style="width: auto;" type="radio" name="intsqlsrv" value="User" >user</br>
-                        </td>
-                        <td><label><b><u>INTSQLSRV1</u></b></label></br>
-                            <input style="width: auto;" type="radio" name="intsqlsrv1" value="Admin">admin</br>
-                            <input style="width: auto;" type="radio" name="intsqlsrv1" value="User">user</br>
-                        </td>
-                        <td><label><b><u>OFFICE DB-LIVE</u></b></label></br>
-                            <input style="width: auto;" type="radio" name="officedb" value="Admin">admin</br>
-                            <input style="width: auto;" type="radio" name="officedb" value="User">user</br>
-                        </td>
-                        <td><label><b><u>REALTIME-DB-LIVE</u></b></label></br>
-                            <input style="width: auto;" type="radio" name="realtimedb" value="Admin">admin</br>
-                            <input style="width: auto;" type="radio" name="realtimedb" value="User">user</br>
-                        </td>
+
+                     
+<?php
+    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'SQL DATABASES' LIMIT 4");
+    //$values = mysqli_fetch_assoc($systemsql);
+
+    foreach ($systemsql as $row) {
+        $id = $row['id'];
+    ?>
+    <td><label><b><u><?php echo $row['entity']?></u></b></label></br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="Admin" >admin</br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="User" >user</br>
+    </td>
+    <?php 
+    }
+?>
+
+
                     </tr>
                     <tr>
-                        <td><label><b><u>CENCON</u></b></label></br>
-                            <input style="width: auto;" type="radio" name="cencon" value="Admin" >admin</br>
-                            <input style="width: auto;" type="radio" name="cencon" value="User" >user</br>
-                        </td>
-                        <td><label><b><u>ENTSQLSRV</u></b></label></br>
-                            <input style="width: auto;" type="radio" name="entsqlsrv" value="Admin">admin</br>
-                            <input style="width: auto;" type="radio" name="entsqlsrv" value="User">user</br>
-                        </td>
+<?php
+    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'SQL DATABASES' ORDER BY sid DESC LIMIT 2 ");
+    //$values = mysqli_fetch_assoc($systemsql);
+
+    foreach ($systemsql as $row) {
+        $id = $row['id'];
+    ?>
+    <td><label><b><u><?php echo $row['entity']?></u></b></label></br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="Admin" >admin</br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="User" >user</br>
+    </td>
+    <?php 
+    }
+?>
                     </tr>
             
             
@@ -113,18 +118,21 @@ include_once ('php/header.php');
             <tr>
                 <th style="background-color:#00425f;color: #fff;" > DEVICES</th>
                 <tr>
-                    <td><label><b><u>ROUTER</u></b></label></br>
-                        <input style="width: auto;" type="checkbox" name="partner_router" value="User" >Partner Router</br>
-                        <input style="width: auto;" type="checkbox" name="internet_router" value="User" >Internet Router</br>
-                    </td>
-                    <td><label><b><u>FIREWALL</u></b></label></br>
-                        <input style="width: auto;" type="checkbox" name="meraki_fw" value="User">Meraki</br>
-                        <input style="width: auto;" type="checkbox" name="juniper_fw" value="User">Juniper</br>
-                    </td>
-                    <td><label><b><u>ACCESS CONTROL</u></b></label></br>
-                        <input style="width: auto;" type="checkbox" name="office_access" value="User">OFFICE</br>
-                        <input style="width: auto;" type="checkbox" name="cde_access" value="User">CDE</br>
-                    </td>
+<?php
+    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'DEVICES' LIMIT 4 ");
+    //$values = mysqli_fetch_assoc($systemsql);
+
+    foreach ($systemsql as $row) {
+        $id = $row['id'];
+    ?>
+    <td><label><b><u><?php echo $row['entity']?></u></b></label></br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="Admin" >admin</br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="User" >user</br>
+    </td>
+    <?php 
+    }
+?>
+                    
                 </tr>
             </tr> 
             
@@ -134,24 +142,20 @@ include_once ('php/header.php');
                 <th style="background-color:#00425f;color: #fff;" >SYSTEMS</th>
 
                 <tr>
-                    <td><label><b><u>PASTEL</u></b></label></br>
-                        <input style="width: auto;" type="radio" name="pastel" value="Admin" >admin</br>
-                        <input style="width: auto;" type="radio" name="pastel" value="User" >user</br>
-                    </td>
-                    <td><label><b><u>TERMINAL SERVER</u></b></label></br>
-                        <input style="width: auto;" type="radio" name="terminal_server" value="Admin" >admin</br>
-                        <input style="width: auto;" type="radio" name="terminal_server" value="User" >user</br>
-                    </td>
-                    <td><label><b><u>INTRANET</u></b></label></br>
-                        <input style="width: auto;" type="radio" name="intranet" value="Admin" >admin</br>
-                        <input style="width: auto;" type="radio" name="intranet" value="User" >user</br>
-                    </td>
-                    <td><label><b><u>TRANWALL TC</u></b></label></br>
-                        <input style="width: auto;" type="radio" name="tranwall_tc" value="Admin" >admin</br>
-                        <input style="width: auto;" type="radio" name="tranwall_tc" value="Support" >support</br>
-                        <input style="width: auto;" type="radio" name="tranwall_tc" value="User" >user</br>
-                        <input style="width: auto;" type="radio" name="tranwall_tc" value="Limited" >limited</br>
-                    </td>
+<?php
+    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'SYSTEMS' LIMIT 4 ");
+    //$values = mysqli_fetch_assoc($systemsql);
+
+    foreach ($systemsql as $row) {
+        $id = $row['id'];
+    ?>
+    <td><label><b><u><?php echo $row['entity']?></u></b></label></br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="Admin" >admin</br>
+        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="User" >user</br>
+    </td>
+    <?php 
+    }
+?>
                 </tr>
             </tr>
             

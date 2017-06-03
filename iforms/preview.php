@@ -5,57 +5,31 @@ include_once ('php/header.php');
 $loginsql = mysqli_query($conn, "SELECT * FROM users WHERE userid = '".$_SESSION['sess_username']."'");
 $values = mysqli_fetch_assoc($loginsql);
 
-$NAME= $values["names"];
-$EMAIL= $values["email"];
-$PHONE=$values["phone"];
-$DESIGNATION=$values["designation"];
-$DEPARTMENT=$values["department"];
+//fixed variables
+$NAME=  mysqli_real_escape_string($conn, $values["names"]);
+$EMAIL=  mysqli_real_escape_string($conn, $values["email"]);
+$PHONE= mysqli_real_escape_string($conn, $values["phone"]);
+$DESIGNATION= mysqli_real_escape_string($conn, $values["designation"]);
+$DEPARTMENT= mysqli_real_escape_string($conn, $values["department"]);
 $USER_ID=$_SESSION['sess_username'];
-//$WORK_LOCATION=$_POST["work_location"];
-$REQUEST_DATE=$_POST["request_date"];
-$EMPLOYEE_NO=$_POST["employee_no"];
+$REQUEST_DATE=  mysqli_real_escape_string($conn, $_POST["request_date"]);
+$EMPLOYEE_NO=  mysqli_real_escape_string($conn, $_POST["employee_no"]);
+$TYPE_OF_REQUEST=   mysqli_real_escape_string($conn, $_POST["type_of_user"]);
+$PURPOSE=  mysqli_real_escape_string($conn, $_POST["purpose"]);
+//fixed variables
 
-//section c type of request
-$TYPE_OF_REQUEST= $_POST["type_of_user"];
 
-//section d system acess
-//domains
-$PAYNET=$_POST["paynet"];
-$PAYNETSLAN=$_POST["paynetslan"];
-$INTERSWITCH=$_POST["interswitch"];
-$INTERSWITCHGROUP=$_POST["interswitchgroup"];
 
-//databases
-//oracle
-$PRIME=$_POST["prime"];
-$ONLINE=$_POST["online"];
-$FRAUDGUARD=$_POST["fraudguard"];
-$IST=$_POST["ist"];
-//sql
-$INTSQLSRV=$_POST["intsqlsrv"];
-$INTSQLSRV1=$_POST["intsqlsrv1"];
-$OFFICE_DB=$_POST["officedb"];
-$REALTIME_DB=$_POST["realtimedb"];
-$CENCON=$_POST["cencon"];
-$ENTSQLSRV=$_POST["entsqlsrv"];
+//variable systems. fetch 
+	$systemsql = mysqli_query($conn, "SELECT * FROM systems");
+	//$values = mysqli_fetch_assoc($systemsql);
 
-//devices
-//router 
-$PARTNER_ROUTER=$_POST["partner_router"];
-$INTERNET_ROUTER=$_POST["internet_router"];
-//firewall
-$MERAKI=$_POST["meraki_fw"];
-$JUNIPER=$_POST["juniper_fw"];
-//acess control
-$OFFICE_ACCESS=$_POST["office_access"];
-$CDE_ACCESS=$_POST["cde_access"];
+	foreach ($systemsql as $row) {
+		$var = $row['entity'];
 
-//systems
-$PASTEL=$_POST["pastel"];
-$TERMINAL_SERVER=$_POST["terminal_server"];
-$INTRANET=$_POST["intranet"];
-$TRANWALL_TC=$_POST["tranwall_tc"];
-$PURPOSE=$_POST["purpose"];
+		$$var =  mysqli_real_escape_string($conn, $_POST[$row['name']]);
+	}
+//variable systems
 
 ?>
 
@@ -88,94 +62,24 @@ $PURPOSE=$_POST["purpose"];
 <tr>
 	<td  style="background-color:#b6c2f9;text-align: left;color: #000">
 	<ul class="columnlist">
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Paynet</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $PAYNET;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Paynetslan</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $PAYNETSLAN;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Interswitch</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $INTERSWITCH;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Interswitchgroup</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $INTERSWITCHGROUP;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Prime</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $PRIME;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Online</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $ONLINE;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Fraudguard</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $FRAUDGUARD;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Ist</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $IST;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Intsqlsrv</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $INTSQLSRV;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Intsqlsrv1</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $INTSQLSRV1;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Officedb</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $OFFICE_DB;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Realtimedb</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $REALTIME_DB;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Cencon</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $CENCON;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Entsqlsrv</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $ENTSQLSRV;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Partner Router
-</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $PARTNER_ROUTER;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Internet Router
-</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $INTERNET_ROUTER;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Meraki</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $MERAKI;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Juniper</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $JUNIPER;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Pastel</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $PASTEL;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Terminal Server
-</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $TERMINAL_SERVER;?></b></p>
-</li>
-<li style='border:1px solid black;width:100%;'>
-	<p style='width: 70%;border-right:1px solid black;display:inline-block;'>Tranwall TC
-</p>
-	<p style='width: 30%;display:inline;'><b><?php echo $TRANWALL_TC;?></b></p>
-</li>
+
+
+
+<?php
+	$systemsql = mysqli_query($conn, "SELECT * FROM systems");
+
+	foreach ($systemsql as $row) {
+		$var = $row['entity'];
+	?>
+		<li style='border:1px solid black;width:100%;'>
+			
+			<p style='width: 70%;border-right:1px solid black;display:inline-block;'><?php echo $var;?></p>
+			<p style='width: 30%;display:inline;'><b><?php echo $$var;?></b></p>
+		</li>
+	<?php
+	}
+?>
+
 
 	</ul>
 	</td>
@@ -332,43 +236,28 @@ foreach ($result as $row) {
 	        <input class="tiny button right" type="Submit" name="form_submit" value="Submit" />
 	        <input class="tiny button left" type="button" onclick="history.go(-1);" value="Back" />
 	    </div>
+			<input type="hidden" name="names" value="<?php echo $NAME; ?>">
+			<input type="hidden" name="emails" value="<?php echo $EMAIL; ?>">
+			<input type="hidden" name="phone_number" value="<?php echo $PHONE; ?>">
+			<input type="hidden" name="designation" value="<?php echo $DESIGNATION; ?>">
+			<input type="hidden" name="department" value="<?php echo $DEPARTMENT; ?>">
+			<input type="hidden" name="user_id" value="<?php echo $USER_ID; ?>">
+			<input type="hidden" name="work_location" value="<?php echo $WORK_LOCATION; ?>">
+			<input type="hidden" name="type_of_user" value="<?php echo $TYPE_OF_REQUEST; ?>">
+			<input type="hidden" name="request_date" value="<?php echo $REQUEST_DATE; ?>">
+			<input type="hidden" name="employee_no" value="<?php echo $EMPLOYEE_NO; ?>">
+			<input type="hidden" name="purpose" value="<?php echo $PURPOSE; ?>">
 
-<input type="hidden" name="names" value="<?php echo $NAME; ?>">
-<input type="hidden" name="emails" value="<?php echo $EMAIL; ?>">
-<input type="hidden" name="phone_number" value="<?php echo $PHONE; ?>">
-<input type="hidden" name="designation" value="<?php echo $DESIGNATION; ?>">
-<input type="hidden" name="department" value="<?php echo $DEPARTMENT; ?>">
-<input type="hidden" name="user_id" value="<?php echo $USER_ID; ?>">
-<input type="hidden" name="work_location" value="<?php echo $WORK_LOCATION; ?>">
-<input type="hidden" name="type_of_user" value="<?php echo $TYPE_OF_REQUEST; ?>">
-<input type="hidden" name="request_date" value="<?php echo $REQUEST_DATE; ?>">
-<input type="hidden" name="employee_no" value="<?php echo $EMPLOYEE_NO; ?>">
-<input type="hidden" name="paynet" value="<?php echo $PAYNET; ?>">
-<input type="hidden" name="interswitch" value="<?php echo $INTERSWITCH; ?>">
-<input type="hidden" name="paynetslan" value="<?php echo $PAYNETSLAN; ?>">
-<input type="hidden" name="interswitchgroup" value="<?php echo $INTERSWITCHGROUP; ?>">
-<input type="hidden" name="prime" value="<?php echo $PRIME; ?>">
-<input type="hidden" name="online" value="<?php echo $ONLINE; ?>">
-<input type="hidden" name="fraudguard" value="<?php echo $FRAUDGUARD; ?>">
-<input type="hidden" name="ist" value="<?php echo $IST; ?>">
-<input type="hidden" name="intsqlsrv" value="<?php echo $INTSQLSRV; ?>">
-<input type="hidden" name="intsqlsrv1" value="<?php echo $INTSQLSRV1; ?>">
-<input type="hidden" name="officedb" value="<?php echo $OFFICE_DB; ?>">
-<input type="hidden" name="realtimedb" value="<?php echo $REALTIME_DB; ?>">
-<input type="hidden" name="cencon" value="<?php echo $CENCON; ?>">
-<input type="hidden" name="entsqlsrv" value="<?php echo $ENTSQLSRV; ?>">
-<input type="hidden" name="partner_router" value="<?php echo $PARTNER_ROUTER; ?>">
-<input type="hidden" name="internet_router" value="<?php echo $INTERNET_ROUTER; ?>">
-<input type="hidden" name="meraki_fw" value="<?php echo $MERAKI; ?>">
-<input type="hidden" name="juniper_fw" value="<?php echo $JUNIPER; ?>">
-<input type="hidden" name="office_access" value="<?php echo $OFFICE_ACCESS; ?>">
-<input type="hidden" name="cde_access" value="<?php echo $CDE_ACCESS; ?>">
-<input type="hidden" name="pastel" value="<?php echo $PASTEL; ?>">
-<input type="hidden" name="terminal_server" value="<?php echo $TERMINAL_SERVER; ?>">
-<input type="hidden" name="intranet" value="<?php echo $INTRANET; ?>">
-<input type="hidden" name="tranwall_tc" value="<?php echo $TRANWALL_TC; ?>">
-<input type="hidden" name="purpose" value="<?php echo $PURPOSE; ?>">
+			<?php
+				$systemsql = mysqli_query($conn, "SELECT * FROM systems");
 
+				foreach ($systemsql as $row) {
+					$var = $row['entity'];
+				?>
+					<input type="hidden" name="<?php echo $row['name'];?>" value="<?php echo $$var;?>">
+				<?php
+				}
+			?>
 	</form>
 </div>
 
@@ -379,77 +268,50 @@ if (isset($_POST['form_submit'])) {
 	$loginsql = mysqli_query($conn, "SELECT * FROM users WHERE userid = '".$_SESSION['sess_username']."'");
 	$values = mysqli_fetch_assoc($loginsql);
 
-	$NAME= $values["names"];
-	$EMAIL= $values["email"];
-	$PHONE=$values["phone"];
-	$DESIGNATION=$values["designation"];
-	$DEPARTMENT=$values["department"];
-	$USER_ID=$_SESSION['sess_username'];
-	//$WORK_LOCATION=$_POST["work_location"];
-	$REQUEST_DATE=$_POST["request_date"];
-	$EMPLOYEE_NO=$_POST["employee_no"];
+//fixed variables
+$NAME=  mysqli_real_escape_string($conn, $values["names"]);
+$EMAIL=  mysqli_real_escape_string($conn, $values["email"]);
+$PHONE= mysqli_real_escape_string($conn, $values["phone"]);
+$DESIGNATION= mysqli_real_escape_string($conn, $values["designation"]);
+$DEPARTMENT= mysqli_real_escape_string($conn, $values["department"]);
+$USER_ID=$_SESSION['sess_username'];
+$REQUEST_DATE=  mysqli_real_escape_string($conn, $_POST["request_date"]);
+$EMPLOYEE_NO=  mysqli_real_escape_string($conn, $_POST["employee_no"]);
+$TYPE_OF_REQUEST=   mysqli_real_escape_string($conn, $_POST["type_of_user"]);
+$PURPOSE=  mysqli_real_escape_string($conn, $_POST["purpose"]);
+//fixed variables
 
-	//section c type of request
-	$TYPE_OF_REQUEST= $_POST["type_of_user"];
+//variable systems. fetch 
+	$systemsql = mysqli_query($conn, "SELECT * FROM systems");
+	//$values = mysqli_fetch_assoc($systemsql);
 
-	//section d system acess
-	//domains
-	$PAYNET=$_POST["paynet"];
-	$PAYNETSLAN=$_POST["paynetslan"];
-	$INTERSWITCH=$_POST["interswitch"];
-	$INTERSWITCHGROUP=$_POST["interswitchgroup"];
+	foreach ($systemsql as $row) {
+		$var = $row['entity'];
 
-	//databases
-	//oracle
-	$PRIME=$_POST["prime"];
-	$ONLINE=$_POST["online"];
-	$FRAUDGUARD=$_POST["fraudguard"];
-	$IST=$_POST["ist"];
-	//sql
-	$INTSQLSRV=$_POST["intsqlsrv"];
-	$INTSQLSRV1=$_POST["intsqlsrv1"];
-	$OFFICE_DB=$_POST["officedb"];
-	$REALTIME_DB=$_POST["realtimedb"];
-	$CENCON=$_POST["cencon"];
-	$ENTSQLSRV=$_POST["entsqlsrv"];
+		$$var =  mysqli_real_escape_string($conn, $_POST[$row['name']]);
+	}
+//variable systems
 
-	//devices
-	//router 
-	$PARTNER_ROUTER=$_POST["partner_router"];
-	$INTERNET_ROUTER=$_POST["internet_router"];
-	//firewall
-	$MERAKI=$_POST["meraki_fw"];
-	$JUNIPER=$_POST["juniper_fw"];
-	//acess control
-	$OFFICE_ACCESS=$_POST["office_access"];
-	$CDE_ACCESS=$_POST["cde_access"];
-
-	//systems
-	$PASTEL=$_POST["pastel"];
-	$TERMINAL_SERVER=$_POST["terminal_server"];
-	$INTRANET=$_POST["intranet"];
-	$TRANWALL_TC=$_POST["tranwall_tc"];
-	$PURPOSE=$_POST["purpose"];
 
 	//auths
 	//auths 
-	$authlm = explode('|', $_POST['authlm']);
+	$authlm = explode('|',  mysqli_real_escape_string($conn, $_POST['authlm']));
 	$useridlm = $authlm[0];
 	$authlmname = $authlm[1];
 
-	$auth1 = explode('|', $_POST['auth1']);
+	$auth1 = explode('|',  mysqli_real_escape_string($conn, $_POST['auth1']));
 	$userid1 = $auth1[0];
 	$auth1name = $auth1[1];
 
-	$auth2 = explode('|', $_POST['auth2']);
+	$auth2 = explode('|',  mysqli_real_escape_string($conn, $_POST['auth2']));
 	$userid2 = $auth2[0];
 	$auth2name = $auth2[1];
 
-	$auth3 = explode('|', $_POST['auth3']);
+	$auth3 = explode('|',  mysqli_real_escape_string($conn, $_POST['auth3']));
 	$userid3 = $auth3[0];
 	$auth3name = $auth3[1];
 
-	$auth4 = explode('|', $_POST['auth4']);
+	$auth4 = explode('|',  mysqli_real_escape_string($conn, $_POST['auth4']));
 	$userid4 = $auth4[0];
 	$auth4name = $auth4[1];
 
