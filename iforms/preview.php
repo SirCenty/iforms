@@ -20,7 +20,8 @@ $PURPOSE=  mysqli_real_escape_string($conn, $_POST["purpose"]);
 
 
 
-//variable systems. fetch 
+//assign variables for value inserted from the forms.php.
+//fetch the variable names from database dynamically
 	$systemsql = mysqli_query($conn, "SELECT * FROM systems");
 	//$values = mysqli_fetch_assoc($systemsql);
 
