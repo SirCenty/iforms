@@ -898,14 +898,14 @@ include_once ('php/header.php');
 //AUTH LM
 if (isset($_POST['authlmpost'])) {
 
-    $id = $_POST['id'];
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
     $sql = "UPDATE `network` SET authlevel= '1', a0 = 'yes' WHERE id = '" . $id . "'";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
     }
 
     $notify_authsql = mysqli_query($conn, "SELECT DISTINCT network.id as nid, initials, userid, email, authlm, auth1, auth2, auth3, auth4 FROM users, network 
-WHERE network.id = '" . $id . "' AND auth1 = initials");
+WHERE network.id = '" . $id . "' AND auth1 = userid");
     $notify_values = mysqli_fetch_assoc($notify_authsql);
 
 
@@ -942,15 +942,14 @@ An authorization request is pending your approal. Click <a href="http://192.168.
 };
 if (isset($_POST['authlmdecline'])) {
 
-    $decline_reason = $_POST['decline_reason'];
-    $id = $_POST['id'];
+    $decline_reason = mysqli_real_escape_string($conn, $_POST['decline_reason']);
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
     $sql = "UPDATE `network` SET a0 = 'no', decline_reason = '" . $decline_reason . "' WHERE id = '" . $id . "'";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
     }
 
-
-    $notify_reqsql = mysqli_query($conn, "SELECT users.names as uname, network.id as nid, network.emails as nemails, initials FROM users, network WHERE network.id = '" . $id . "' AND authlm = initials");
+    $notify_reqsql = mysqli_query($conn, "SELECT users.names as uname, network.id as nid, network.emails as nemails FROM users, network WHERE network.id = '" . $id . "'");
     $notify_reqvalues = mysqli_fetch_assoc($notify_reqsql);
 
 
@@ -989,7 +988,7 @@ Your authorization request was declined by ' . $notify_reqvalues['uname'] . '. R
 //AUTH 1
 if (isset($_POST['auth1post'])) {
 
-    $id = $_POST['id'];
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
     $sql = "UPDATE `network` SET authlevel= '2', a1 = 'yes' WHERE id = '" . $id . "'";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
@@ -997,7 +996,7 @@ if (isset($_POST['auth1post'])) {
 
 
     $notify_authsql = mysqli_query($conn, "SELECT DISTINCT network.id as nid, initials, userid, email, authlm, auth1, auth2, auth3, auth4 FROM users, network 
-WHERE network.id = '" . $id . "' AND auth2 = initials");
+WHERE network.id = '" . $id . "' AND auth2 = userid");
     $notify_values = mysqli_fetch_assoc($notify_authsql);
 
 
@@ -1037,15 +1036,14 @@ An authorization request is pending your approal. Click <a href="http://192.168.
 };
 if (isset($_POST['auth1decline'])) {
 
-    $decline_reason = $_POST['decline_reason'];
-    $id = $_POST['id'];
+    $decline_reason = mysqli_real_escape_string($conn, $_POST['decline_reason']);
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
     $sql = "UPDATE `network` SET a1 = 'no' WHERE id = '" . $id . "'";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
     }
 
-
-    $notify_reqsql = mysqli_query($conn, "SELECT users.names as uname, network.id as nid, network.emails as nemails, initials FROM users, network WHERE network.id = '" . $id . "' AND auth1 = initials");
+    $notify_reqsql = mysqli_query($conn, "SELECT users.names as uname, network.id as nid, network.emails as nemails FROM users, network WHERE network.id = '" . $id . "'");
         $notify_reqvalues = mysqli_fetch_assoc($notify_reqsql);
 
 
@@ -1086,7 +1084,7 @@ if (isset($_POST['auth1decline'])) {
 //AUTH 2
 if (isset($_POST['auth2post'])) {
 
-    $id = $_POST['id'];
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
     $sql = "UPDATE `network` SET authlevel = '3', a2 = 'yes' WHERE id = '" . $id . "'";
 
     if (!mysqli_query($conn, $sql)) {
@@ -1094,7 +1092,7 @@ if (isset($_POST['auth2post'])) {
     }
 
     $notify_authsql = mysqli_query($conn, "SELECT DISTINCT network.id as nid, initials, userid, email, authlm, auth1, auth2, auth3, auth4 FROM users, network 
-WHERE network.id = '" . $id . "' AND auth3 = initials");
+WHERE network.id = '" . $id . "' AND auth3 = userid");
     $notify_values = mysqli_fetch_assoc($notify_authsql);
 
 
@@ -1132,8 +1130,8 @@ An authorization request is pending your approal. Click <a href="http://192.168.
 };
 if (isset($_POST['auth2decline'])) {
 
-    $decline_reason = $_POST['decline_reason'];
-    $id = $_POST['id'];
+    $decline_reason = mysqli_real_escape_string($conn, $_POST['decline_reason']);
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
     $sql = "UPDATE `network` SET a2 = 'no'  WHERE id = '" . $id . "'";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
@@ -1178,7 +1176,7 @@ Your authorization request was declined by ' . $notify_reqvalues['uname'] . '. R
 //AUTH 3
 if (isset($_POST['auth3post'])) {
 
-    $id = $_POST['id'];
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
     $sql = "UPDATE `network` SET authlevel = '4',a3 = 'yes' WHERE id = '" . $id . "'";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
@@ -1186,7 +1184,7 @@ if (isset($_POST['auth3post'])) {
 
 
     $notify_authsql = mysqli_query($conn, "SELECT DISTINCT network.id as nid, initials, userid, email, authlm, auth1, auth2, auth3, auth4 FROM users, network 
-WHERE network.id = '" . $id . "' AND auth4 = initials");
+WHERE network.id = '" . $id . "' AND auth4 = userid");
     $notify_values = mysqli_fetch_assoc($notify_authsql);
 
 
@@ -1224,8 +1222,8 @@ An authorization request is pending your approal. Click <a href="http://192.168.
 };
 if (isset($_POST['auth3decline'])) {
 
-    $decline_reason = $_POST['decline_reason'];
-    $id = $_POST['id'];
+    $decline_reason = mysqli_real_escape_string($conn, $_POST['decline_reason']);
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
     $sql = "UPDATE `network` SET a3 = 'no' WHERE id = '" . $id . "'";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
@@ -1273,14 +1271,14 @@ Your authorization request was declined by ' . $notify_reqvalues['uname'] . '. R
 //AUTH 4
 if (isset($_POST['auth4post'])) {
 
-    $id = $_POST['id'];
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
     $sql = "UPDATE `network` SET authlevel = '5', a4 = 'yes', last_authdate = CURRENT_TIMESTAMP WHERE id = '" . $id . "'";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
     }
 
 //notify requester
-    $notify_reqsql = mysqli_query($conn, "SELECT users.names as uname, network.id as nid, network.emails as nemails, initials FROM users, network WHERE network.id = '" . $id . "' ");
+    $notify_reqsql = mysqli_query($conn, "SELECT users.names as uname, network.id as nid, network.emails as nemails FROM users, network WHERE network.id = '" . $id . "'");
     $notify_reqvalues = mysqli_fetch_assoc($notify_reqsql);
 
     //body 1
@@ -1320,8 +1318,8 @@ if (isset($_POST['auth4post'])) {
 };
 if (isset($_POST['auth4decline'])) {
 
-    $decline_reason = $_POST['decline_reason'];
-    $id = $_POST['id'];
+    $decline_reason = mysqli_real_escape_string($conn, $_POST['decline_reason']);
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
     $sql = "UPDATE `network` SET a4 = 'no' WHERE id = '" . $id . "'";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));

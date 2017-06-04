@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 04, 2017 at 09:56 PM
+-- Generation Time: Jun 01, 2017 at 01:13 PM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.18-0ubuntu0.16.04.1
 
@@ -94,27 +94,6 @@ CREATE TABLE `network` (
   `work_location` varchar(50) DEFAULT NULL,
   `request_date` datetime DEFAULT NULL,
   `employee_no` varchar(50) DEFAULT NULL,
-  `authorizers` text,
-  `auth1name` varchar(50) DEFAULT NULL,
-  `auth2name` varchar(50) DEFAULT NULL,
-  `auth3name` varchar(50) DEFAULT NULL,
-  `auth4name` varchar(50) DEFAULT NULL,
-  `authlevel` varchar(5) DEFAULT NULL,
-  `authlm` varchar(50) DEFAULT NULL,
-  `auth1` varchar(10) DEFAULT NULL,
-  `auth2` varchar(10) DEFAULT NULL,
-  `auth3` varchar(10) DEFAULT NULL,
-  `auth4` varchar(10) DEFAULT NULL,
-  `a0` varchar(5) DEFAULT NULL,
-  `a1` varchar(3) DEFAULT NULL,
-  `a2` varchar(3) DEFAULT NULL,
-  `a3` varchar(3) DEFAULT NULL,
-  `a4` varchar(3) DEFAULT NULL,
-  `decline_reason` varchar(255) DEFAULT NULL,
-  `last_authdate` datetime DEFAULT NULL,
-  `access_granted` datetime DEFAULT NULL,
-  `implement_date` datetime DEFAULT NULL,
-  `purpose` text,
   `paynet` varchar(50) DEFAULT NULL,
   `paynetslan` varchar(50) DEFAULT NULL,
   `interswitch` varchar(50) DEFAULT NULL,
@@ -139,10 +118,58 @@ CREATE TABLE `network` (
   `terminal_server` varchar(50) DEFAULT NULL,
   `intranet` varchar(50) DEFAULT NULL,
   `tranwall_tc` varchar(50) DEFAULT NULL,
-  `scorebridge` varchar(50) DEFAULT NULL,
-  `intappsrv1` varchar(50) DEFAULT NULL,
-  `intwebsrv1` varchar(50) DEFAULT NULL
+  `purpose` text,
+  `authorizers` text,
+  `auth1name` varchar(50) DEFAULT NULL,
+  `auth2name` varchar(50) DEFAULT NULL,
+  `auth3name` varchar(50) DEFAULT NULL,
+  `auth4name` varchar(50) DEFAULT NULL,
+  `authlevel` varchar(5) DEFAULT NULL,
+  `authlm` varchar(50) DEFAULT NULL,
+  `auth1` varchar(10) DEFAULT NULL,
+  `auth2` varchar(10) DEFAULT NULL,
+  `auth3` varchar(10) DEFAULT NULL,
+  `auth4` varchar(10) DEFAULT NULL,
+  `a0` varchar(5) DEFAULT NULL,
+  `a1` varchar(3) DEFAULT NULL,
+  `a2` varchar(3) DEFAULT NULL,
+  `a3` varchar(3) DEFAULT NULL,
+  `a4` varchar(3) DEFAULT NULL,
+  `decline_reason` varchar(255) DEFAULT NULL,
+  `last_authdate` datetime DEFAULT NULL,
+  `access_granted` datetime DEFAULT NULL,
+  `implement_date` datetime DEFAULT NULL,
+  `paynetDATE` datetime DEFAULT NULL,
+  `interswitchDATE` datetime DEFAULT NULL,
+  `paynetslanDATE` datetime DEFAULT NULL,
+  `interswitchgroupDATE` datetime DEFAULT NULL,
+  `primeDATE` datetime DEFAULT NULL,
+  `onlineDATE` datetime DEFAULT NULL,
+  `fraudguardDATE` datetime DEFAULT NULL,
+  `istDATE` datetime DEFAULT NULL,
+  `intsqlsrvDATE` datetime DEFAULT NULL,
+  `intsqlsrv1DATE` datetime DEFAULT NULL,
+  `officedbDATE` datetime DEFAULT NULL,
+  `realtimedbDATE` datetime DEFAULT NULL,
+  `cenconDATE` datetime DEFAULT NULL,
+  `entsqlsrvDATE` datetime DEFAULT NULL,
+  `routerDATE` datetime DEFAULT NULL,
+  `firewallDATE` datetime DEFAULT NULL,
+  `access_controlDATE` datetime DEFAULT NULL,
+  `pastelDATE` datetime DEFAULT NULL,
+  `terminal_serverDATE` datetime DEFAULT NULL,
+  `intranetDATE` datetime DEFAULT NULL,
+  `tranwall_tcDATE` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `network`
+--
+
+INSERT INTO `network` (`id`, `reqtype`, `names`, `emails`, `phone_number`, `designation`, `department`, `user_id`, `work_location`, `request_date`, `employee_no`, `paynet`, `paynetslan`, `interswitch`, `interswitchgroup`, `prime`, `online`, `fraudguard`, `ist`, `intsqlsrv`, `intsqlsrv1`, `officedb`, `realtimedb`, `cencon`, `entsqlsrv`, `partner_router`, `internet_router`, `meraki_fw`, `juniper_fw`, `office_access`, `cde_access`, `pastel`, `terminal_server`, `intranet`, `tranwall_tc`, `purpose`, `authorizers`, `auth1name`, `auth2name`, `auth3name`, `auth4name`, `authlevel`, `authlm`, `auth1`, `auth2`, `auth3`, `auth4`, `a0`, `a1`, `a2`, `a3`, `a4`, `decline_reason`, `last_authdate`, `access_granted`, `implement_date`, `paynetDATE`, `interswitchDATE`, `paynetslanDATE`, `interswitchgroupDATE`, `primeDATE`, `onlineDATE`, `fraudguardDATE`, `istDATE`, `intsqlsrvDATE`, `intsqlsrv1DATE`, `officedbDATE`, `realtimedbDATE`, `cenconDATE`, `entsqlsrvDATE`, `routerDATE`, `firewallDATE`, `access_controlDATE`, `pastelDATE`, `terminal_serverDATE`, `intranetDATE`, `tranwall_tcDATE`) VALUES
+(1, 'New User', 'Vincent Omondi', 'vincent.omondi@interswitchgroup.com', '254710145559', 'Switch Technician', 'Core Systems and Switching', 'omondiv', '', '2017-05-26 17:20:55', '', '', '', '', '', '', '', '', '', '', 'User', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Cardwatch and Cardview support.', 'Paul Mathenge Maina, Linda Warui, Joseph Nguu, Maseline Keya, Linda Warui', NULL, NULL, NULL, NULL, '5', 'PMM', 'LW', 'JN', 'MK', 'LW', 'yes', 'yes', 'yes', 'yes', 'yes', NULL, '2017-05-26 17:49:17', NULL, '2017-05-28 23:47:10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'New User', 'Vincent Omondi', 'vincent.omondi@interswitchgroup.com', '254710145559', 'Technician', 'Core Systems & Switching', 'omondiv', '', '2017-05-28 00:23:36', '', '', '', 'Admin', '', '', '', '', '', '', '', '', '', '', '', '', '', 'User', '', '', '', '', '', '', '', 'adasdfa', 'Vincent Omondi, Vincent Omondi, Vincent Omondi, Vincent Omondi, Vincent Omondi', NULL, NULL, NULL, NULL, '5', 'omondiv', 'omondiv', 'omondiv', 'omondiv', 'omondiv', 'yes', 'yes', 'yes', 'yes', 'yes', NULL, '2017-05-29 00:13:32', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Temporary Access', 'Vincent Omondi', 'vincent.omondi@interswitchgroup.com', '254710145559', 'Technician', 'Core Systems & Switching', 'omondiv', '', '2017-05-28 23:20:00', '', '', '', 'Admin', '', '', 'User', '', '', '', 'Admin', '', '', '', 'User', '', '', '', '', 'User', 'User', '', '', '', 'Limited', 'testing', 'Vincent Omondi, Vincent Omondi, Vincent Omondi, Vincent Omondi, Vincent Omondi', NULL, NULL, NULL, NULL, '4', 'omondiv', 'omondiv', 'omondiv', 'omondiv', 'omondiv', 'yes', 'yes', 'yes', 'yes', 'no', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -322,40 +349,35 @@ CREATE TABLE `systems` (
   `sid` int(20) NOT NULL,
   `entity` varchar(30) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
-  `type` varchar(50) DEFAULT NULL
+  `value` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `systems`
 --
 
-INSERT INTO `systems` (`sid`, `entity`, `name`, `type`) VALUES
-(1, 'PAYNET', 'paynet', 'DOMAINS'),
-(2, 'INTERSWITCH', 'interswitch', 'DOMAINS'),
-(3, 'PAYNETSLAN', 'paynetslan', 'DOMAINS'),
-(4, 'INTERSWITCHGROUP', 'interswitchgroup', 'DOMAINS'),
-(5, 'PRIME', 'prime', 'ORACLE DATABASES'),
-(6, 'ONLINE', 'online', 'ORACLE DATABASES'),
-(7, 'FRAUDGUARD', 'fraudguard', 'ORACLE DATABASES'),
-(8, 'IST', 'ist', 'ORACLE DATABASES'),
-(9, 'INTSQLSRV', 'intsqlsrv', 'SQL DATABASES'),
-(10, 'INTSQLSRV1', 'intsqlsrv1', 'SQL DATABASES'),
-(11, 'OFFICEDB', 'officedb', 'SQL DATABASES'),
-(12, 'REALTIMEDB', 'realtimedb', 'SQL DATABASES'),
-(13, 'CENCON', 'cencon', 'SQL DATABASES'),
-(14, 'ENTSQLSRV', 'entsqlsrv', 'SQL DATABASES'),
-(15, 'PARTNER ROUTER', 'partner_router', 'DEVICES'),
-(16, 'INTERNET ROUTER', 'internet_router', 'DEVICES'),
-(17, 'MERAKI', 'meraki_fw', 'DEVICES'),
-(18, 'JUNIPER', 'juniper_fw', 'DEVICES'),
-(19, 'PASTEL', 'pastel', 'SYSTEMS'),
-(20, 'TERMINAL SERVER', 'terminal_server', 'SYSTEMS'),
-(21, 'TRANWALL TC', 'tranwall_tc', 'SYSTEMS'),
-(22, 'SCOREBRIDGE', 'scorebridge', 'SYSTEMS'),
-(23, 'OFFICE_ACCESS', 'office_access', 'ACCESS'),
-(24, 'CDE_ACCESS', 'cde_access', 'ACCESS'),
-(25, 'INTAPPSRV1', 'intappsrv1', 'SYSTEMS'),
-(26, 'INTWEBSRV1', 'intwebsrv1', 'SYSTEMS');
+INSERT INTO `systems` (`sid`, `entity`, `name`, `value`) VALUES
+(1, 'Paynet', 'paynet', '[Paynet]'),
+(2, 'Interswitch', 'interswitch', '[Interswitch]'),
+(3, 'Paynetslan', 'paynetslan', '[Paynetslan]'),
+(4, 'Interswitchgroup', 'interswitchgroup', '[Interswitchgroup]'),
+(5, 'Prime', 'prime', '[Prime]'),
+(6, 'Online', 'online', '[Online]'),
+(7, 'Fraudguard', 'fraudguard', '[Fraudguard]'),
+(8, 'Ist', 'ist', '[IST]'),
+(9, 'Intsqlsrv', 'intsqlsrv', '[Intsqlsrv]'),
+(10, 'Intsqlsrv1', 'intsqlsrv1', '[Intsqlsrv1]'),
+(11, 'Officedb', 'officedb', '[Office-DB]'),
+(12, 'Realtimedb', 'realtimedb', '[Realtime-DB]'),
+(13, 'Cencon', 'cencon', '[Cencon]'),
+(14, 'Entsqlsrv', 'entsqlsrv', '[Entsqlsrv]'),
+(15, 'Partner Router', 'partner_router', '[Partner router]'),
+(16, 'Internet Router', 'internet_router', '[Internet router]'),
+(17, 'Meraki', 'meraki_fw', '[Meraki]'),
+(18, 'Juniper', 'juniper_fw', '[Juniper]'),
+(19, 'Pastel', 'pastel', '[Pastel]'),
+(20, 'Terminal Server', 'terminal_server', '[Terminal Server]'),
+(21, 'Tranwall TC', 'tranwall_tc', '[Tranwall TC]');
 
 -- --------------------------------------------------------
 
@@ -378,6 +400,13 @@ CREATE TABLE `users` (
   `implementer` varchar(5) DEFAULT NULL,
   `line_manager` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `names`, `initials`, `email`, `phone`, `userid`, `department`, `designation`, `password`, `salt`, `authorizer`, `implementer`, `line_manager`) VALUES
+(40, 'Vincent Omondi', 'VO', 'vincent.omondi@interswitchgroup.com', '254710145559', 'omondiv', 'Core Systems & Switching', 'Technician', '5dd7fcf7da636652e3f036af3ce26a8d8ceff4f6d5ba73da8ffd3eb6b79a03324866ce811fa8fc251fd50211a7a509a03533c01512a1ca858aedc7a8a5b0271e', 'dag&cM#VRz&oZqaRYP1kwtWks1F3U#UHC#8HgzN8H%0*VXzkiNvGRibq#UdK1EAx', 'yes', 'yes', 'yes');
 
 --
 -- Indexes for dumped tables
@@ -433,37 +462,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `did` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `did` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `designation`
 --
 ALTER TABLE `designation`
-  MODIFY `deid` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `deid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `network`
 --
 ALTER TABLE `network`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `stid` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `stid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 --
 -- AUTO_INCREMENT for table `systems`
 --
 ALTER TABLE `systems`
-  MODIFY `sid` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `sid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -39,21 +39,14 @@ include_once ('php/header.php');
                                   $id = $row['id'];
                                   ?>
 
-                      <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Userid: <b style="font-size: 1.2rem;"><?php echo $row['userid'];?><button class="tiny radius right" style="margin-left: 3rem;margin-bottom: 0rem;font-size: 1.2rem;padding-top:0.2rem;padding-bottom:0.2rem;background-color: #e5231d;">Edit</button></p>
+                      <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Userid: <b style="font-size: 1.2rem;"><?php echo $row['userid'];?></p>
                       <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Email: <b style="font-size: 1.2rem;"><?php echo $row['email'];?></b><button class="tiny radius right" style="margin-left: 3rem;margin-bottom: 0rem;font-size: 1.2rem;padding-top:0.2rem;padding-bottom:0.2rem;background-color: #e5231d;">Edit</button></p>
                       <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Phone: <b style="font-size: 1.2rem;"><?php echo $row['phone'];?></b><button class="tiny radius right" style="margin-left: 3rem;margin-bottom: 0rem;font-size: 1.2rem;padding-top:0.2rem;padding-bottom:0.2rem;background-color: #e5231d;">Edit</button></p>
                       <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Designation: <b style="font-size: 1.2rem;"><?php echo $row['designation'];?></b><button class="tiny radius right" style="margin-left: 3rem;margin-bottom: 0rem;font-size: 1.2rem;padding-top:0.2rem;padding-bottom:0.2rem;background-color: #e5231d;">Edit</button></p>
                       <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Department: <b style="font-size: 1.2rem;"><?php echo $row['department'];?></b><button class="tiny radius right" style="margin-left: 3rem;margin-bottom: 0rem;font-size: 1.2rem;padding-top:0.2rem;padding-bottom:0.2rem;background-color: #e5231d;">Edit</button></p>
-                      <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Line Manager: <b style="font-size: 1.2rem;"><?php echo $row['line_manager'];?></b><button class="tiny radius right" style="margin-left: 3rem;margin-bottom: 0rem;font-size: 1.2rem;padding-top:0.2rem;padding-bottom:0.2rem;background-color: #e5231d;">Edit</button></p>
-                      <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Authorizer: <b style="font-size: 1.2rem;"><?php echo $row['authorizer'];?></b><button class="tiny radius right" style="margin-left: 3rem;margin-bottom: 0rem;font-size: 1.2rem;padding-top:0.2rem;padding-bottom:0.2rem;background-color: #e5231d;">Edit</button></p>
-                      <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Implementer: <b style="font-size: 1.2rem;"><?php echo $row['implementer'];?></b><button class="tiny radius right" style="margin-left: 3rem;margin-bottom: 0rem;font-size: 1.2rem;padding-top:0.2rem;padding-bottom:0.2rem;background-color: #e5231d;">Edit</button></p>
-                      <!--form>
-                        <label style="font-size:1.0rem;color: #ee3132;margin-top: 2rem;margin-left: 3rem;"><u><b>Change Password</b> (NOT WORKING YET)</u></label>
-                        <p style="font-size:1.0rem;color: #fff;margin-left: 3rem;margin-bottom: 0px"><input style="width: 20rem;" type="Password" name="oldpasswd" placeholder="Old password" /></p>
-                        <p style="font-size:1.0rem;color: #fff;margin-left: 3rem;margin-bottom: 0px"><input style="width: 20rem;" type="Password" name="newpasswd" placeholder="New Password" /></p>
-                        <p style="font-size:1.0rem;color: #fff;margin-left: 3rem;margin-bottom: 0px"><input style="width: 20rem;" type="Password" name="confirmpasswd" placeholder="Confirm Password" /></p>
-                        <button style="margin-left: 3rem;" class="radius small" name="changepsswd">Submit</button>
-                      </form-->
+                      <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Line Manager: <b style="font-size: 1.2rem;"><?php echo $row['line_manager'];?></b></p>
+                      <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Authorizer: <b style="font-size: 1.2rem;"><?php echo $row['authorizer'];?></b></p>
+                      <p style="font-size:1.1rem;width:30rem;color: #fff;margin-bottom: 0.5rem;zoom:85%;">Implementer: <b style="font-size: 1.2rem;"><?php echo $row['implementer'];?></b></p>
             <?php
             }
             ?>

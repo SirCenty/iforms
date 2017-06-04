@@ -33,7 +33,7 @@ include_once ('php/header.php');
                 <tr>
                      
 <?php
-    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'DOMAINS' LIMIT 4");
+    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'DOMAINS' ");
     //$values = mysqli_fetch_assoc($systemsql);
 
     foreach ($systemsql as $row) {
@@ -59,7 +59,7 @@ include_once ('php/header.php');
                     <tr>
                      
 <?php
-    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'ORACLE DATABASES' LIMIT 4");
+    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'ORACLE DATABASES' ");
     //$values = mysqli_fetch_assoc($systemsql);
 
     foreach ($systemsql as $row) {
@@ -80,7 +80,7 @@ include_once ('php/header.php');
 
                      
 <?php
-    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'SQL DATABASES' LIMIT 4");
+    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'SQL DATABASES' ");
     //$values = mysqli_fetch_assoc($systemsql);
 
     foreach ($systemsql as $row) {
@@ -95,22 +95,6 @@ include_once ('php/header.php');
 ?>
 
 
-                    </tr>
-                    <tr>
-<?php
-    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'SQL DATABASES' ORDER BY sid DESC LIMIT 2 ");
-    //$values = mysqli_fetch_assoc($systemsql);
-
-    foreach ($systemsql as $row) {
-        $id = $row['id'];
-    ?>
-    <td><label><b><u><?php echo $row['entity']?></u></b></label></br>
-        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="Admin" >admin</br>
-        <input style="width: auto;" type="radio" name="<?php echo $row['name']?>" value="User" >user</br>
-    </td>
-    <?php 
-    }
-?>
                     </tr>
             
             
@@ -119,7 +103,7 @@ include_once ('php/header.php');
                 <th style="background-color:#00425f;color: #fff;" > DEVICES</th>
                 <tr>
 <?php
-    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'DEVICES' LIMIT 4 ");
+    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'DEVICES'  ");
     //$values = mysqli_fetch_assoc($systemsql);
 
     foreach ($systemsql as $row) {
@@ -143,7 +127,7 @@ include_once ('php/header.php');
 
                 <tr>
 <?php
-    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'SYSTEMS' LIMIT 4 ");
+    $systemsql = mysqli_query($conn, "SELECT * FROM systems WHERE type = 'SYSTEMS'  ");
     //$values = mysqli_fetch_assoc($systemsql);
 
     foreach ($systemsql as $row) {

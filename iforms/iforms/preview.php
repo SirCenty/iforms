@@ -236,18 +236,20 @@ foreach ($result as $row) {
 	        <input class="tiny button right" type="Submit" name="form_submit" value="Submit" />
 	        <input class="tiny button left" type="button" onclick="history.go(-1);" value="Back" />
 	    </div>
+	    <!--static values from the logged in user-->
 			<input type="hidden" name="names" value="<?php echo $NAME; ?>">
 			<input type="hidden" name="emails" value="<?php echo $EMAIL; ?>">
 			<input type="hidden" name="phone_number" value="<?php echo $PHONE; ?>">
 			<input type="hidden" name="designation" value="<?php echo $DESIGNATION; ?>">
 			<input type="hidden" name="department" value="<?php echo $DEPARTMENT; ?>">
 			<input type="hidden" name="user_id" value="<?php echo $USER_ID; ?>">
-			<input type="hidden" name="work_location" value="<?php echo $WORK_LOCATION; ?>">
 			<input type="hidden" name="type_of_user" value="<?php echo $TYPE_OF_REQUEST; ?>">
 			<input type="hidden" name="request_date" value="<?php echo $REQUEST_DATE; ?>">
 			<input type="hidden" name="employee_no" value="<?php echo $EMPLOYEE_NO; ?>">
 			<input type="hidden" name="purpose" value="<?php echo $PURPOSE; ?>">
+	    <!--static values from the logged in user-->
 
+	    <!--dynamic values fetched from the db-->
 			<?php
 				$systemsql = mysqli_query($conn, "SELECT * FROM systems");
 
@@ -258,6 +260,8 @@ foreach ($result as $row) {
 				<?php
 				}
 			?>
+	    <!--dynamic values fetched from the db-->
+
 	</form>
 </div>
 
@@ -317,10 +321,47 @@ $PURPOSE=  mysqli_real_escape_string($conn, $_POST["purpose"]);
 
 
 
-	$sql = "INSERT INTO `network`(`reqtype`,`names`, `emails`, `phone_number`, `designation`, `department`, `user_id`, `work_location`, `request_date`, `employee_no`,`paynet`, `paynetslan`, `interswitch`, `interswitchgroup`, `prime`, `online`, `fraudguard`, `ist`, `intsqlsrv`, `intsqlsrv1`, `officedb`, `realtimedb`, `cencon`, `entsqlsrv`, `partner_router`, `internet_router`, `meraki_fw`, `juniper_fw`, `office_access`, `cde_access`, `pastel`, `terminal_server`, `intranet`, `tranwall_tc`, `purpose`, `authorizers`, `authlevel`, `authlm`, `auth1`, `auth2`, `auth3`, `auth4`) 
-	VALUES 	('$TYPE_OF_REQUEST','$NAME','$EMAIL','$PHONE','$DESIGNATION','$DEPARTMENT','$USER_ID','$WORK_LOCATION',CURRENT_TIMESTAMP,'$EMPLOYEE_NO', '$PAYNET','$PAYNETSLAN','$INTERSWITCH','$INTERSWITCHGROUP','$PRIME','$ONLINE','$FRAUDGUARD','$IST','$INTSQLSRV','$INTSQLSRV1','$OFFICE_DB','$REALTIME_DB','$CENCON','$ENTSQLSRV','$PARTNER_ROUTER', '$INTERNET_ROUTER','$MERAKI','$JUNIPER','$OFFICE_ACCESS','$CDE_ACCESS','$PASTEL','$TERMINAL_SERVER','$INTRANET','$TRANWALL_TC','$PURPOSE','$authlmname, $auth1name, $auth2name, $auth3name, $auth4name', '0', '$useridlm', '$userid1','$userid2','$userid3','$userid4');";
+
+//dynamically fetch column and value variables for the insert query from the database
+$systemsql = mysqli_query($conn,"SELECT * FROM systems");
+
+$col_data =  array();
+$val_data =  array();
+foreach ($systemsql as $row) {
+	$col_data[] = $row["name"];
+	$val_data[] = $row["entity"];
+}
+
+$store_col_data = "";
+$store_val_data = "";
+
+//fetch for columns
+foreach ($col_data as $id => $system_name) {
+	$store_col_data .= "`".$system_name. "`,";
+}
+
+//fetch for values
+foreach ($val_data as $id => $system_entity) {
+	$store_val_data .= "'".$$system_entity. "',";
+}
+//dynamically fetch column and value variables for the insert query from the database
 
 
+$sql = "INSERT INTO `network` (`reqtype`,`names`, `emails`, `phone_number`, `designation`, `department`, `user_id`, `request_date`, `employee_no`, 
+
+	$store_col_data 
+
+	`purpose`, `authorizers`, `authlevel`, `authlm`, `auth1`, `auth2`, `auth3`, `auth4`) 
+	VALUES 	('$TYPE_OF_REQUEST','$NAME','$EMAIL','$PHONE','$DESIGNATION','$DEPARTMENT','$USER_ID',CURRENT_TIMESTAMP,'$EMPLOYEE_NO', 
+
+	$store_val_data
+
+	'$PURPOSE','$authlmname, $auth1name, $auth2name, $auth3name, $auth4name', '0', '$useridlm', '$userid1','$userid2','$userid3','$userid4');";
+
+
+
+
+	//notify line mamager query, fetch details of the selected person
 	$notify_authlmsql = mysqli_query($conn, "SELECT DISTINCT network.id as nid, users.names, initials, userid, email, authlm, auth1, auth2, auth3, auth4 FROM users, network WHERE users.names = '".$authlmname."'");
     $notify_values = mysqli_fetch_assoc($notify_authlmsql);
 
